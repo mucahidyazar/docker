@@ -3,7 +3,6 @@ WORKDIR /app
 COPY package*.json README.md /app/
 COPY . /app/
 ADD https://www.google.com .
-
 ADD file.zip .
 RUN npm install
 RUN apt install python
