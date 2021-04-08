@@ -3,6 +3,7 @@ WORKDIR /app
 COPY package*.json README.md /app/
 COPY . /app/
 ADD https://www.google.com .
+
 ADD file.zip .
 RUN npm install
 RUN apt install python
@@ -16,5 +17,7 @@ RUN npm install
 COPY . . 
 ENV API_URL=http://api.myapp.com/
 EXPOSE 3000
+CMD npm start
 CMD ["npm", "start"]
+ENTRYPOINT npm start
 ENTRYPOINT ["npm", "start"]
