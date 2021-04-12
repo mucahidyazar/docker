@@ -2,29 +2,27 @@ version: "3.8"
 
 services:
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+    image: vidly_frontend:1
     ports:
-      - 3000:3000
+      - 80:80
     volumes:
       - ./frontend:/app
-
-  frontend-tests:
-    image: ./vidly_frontend
-    volumes:
-      - ./frontend:/app
-    command: npm test
+    restart: unless-stopped #"no" or always on-failure unless-stopped
 
   backend:
     build: ./backend
+    image: vidly_backend:1
     ports:
       - 3001:3001
     environment:
       # - DB_URL=mongodb://db/vidly
       DB_URL: mongodb://db/vidly
-    volumes:
-      - ./backend:/app
     # command: ./wait-for db:27017 && migrate-mongo up && npm start
     command: ./docker-entrypoint.sh
+    restart: unless-stopped
 
   database:
     image: mongo:4.0-xeinal
@@ -32,6 +30,7 @@ services:
       - 27017:27017
     volumes:
       - vidly:/data/db
+    restart: unless-stopped
 
 volumes:
   vidly:
