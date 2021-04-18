@@ -4,7 +4,7 @@ const app = express();
 
 app.get("/", (req, res) => {
   res.send(`
-    <h1>Hello from inside the very basic Node app!</h1>
+    <h1>Helloo from inside the very basic Node app!</h1>
   `);
 });
 
