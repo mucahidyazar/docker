@@ -89,6 +89,7 @@ mongoose.connect(
     useNewUrlParser: true,
     useUnifiedTopology: true,
   },
+
   (err) => {
     if (err) {
       console.error("FAILED TO CONNECT TO MONGODB");
