@@ -10,7 +10,9 @@ COPY . .
 
 ARG DEFAULT_PORT=80
 ENV PORT=$DEFAULT_PORT
+ENV MONGODB_USERNAME=root
+ENV MONGODB_PASSWORD=secret
 
 EXPOSE $PORT
 
-CMD ["node", "app.js"]
+CMD ["yarn", "dev"]
