@@ -71,6 +71,7 @@ app.delete("/goals/:id", async (req, res) => {
   } catch (err) {
     console.error("ERROR FETCHING GOALS");
     console.error(err.message);
+
     res.status(500).json({ message: "Failed to delete goal." });
   }
 });
